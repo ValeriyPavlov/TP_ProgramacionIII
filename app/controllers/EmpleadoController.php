@@ -3,19 +3,20 @@ require_once './models/Empleado.php';
 
 class EmpleadoController extends Empleado
 {
-    public static $roles = array("Bartender", "Cervecero", "Cocinero", "Mozo", "Socio");
+    public static $roles = array("Bartender", "Cervecero", "Cocinero", "Pastelero", "Mozo", "Socio");
     public function CargarEmpleado($request, $response, $args)
     {
         $parametros = $request->getParsedBody();
         $nombre = $parametros['nombre'];
         $clave = $parametros['clave'];
+        $claveHasheada = md5($clave);
         $rol = $parametros['rol'];
 
         if(in_array($rol, $this::$roles))
         {
             $empleado = new Empleado();
             $empleado->nombre = $nombre;
-            $empleado->clave = $clave;
+            $empleado->clave = $claveHasheada;
             $empleado->rol = $rol;
             $empleado->AltaEmpleado();
             $payload = json_encode(array("Mensaje" => "Usuario creado con exito"));

@@ -40,6 +40,15 @@ class Empleado
         return $consulta->fetchAll(PDO::FETCH_CLASS, 'Empleado');
     }
 
+    public static function GetEmpleadoPorNombre($nombre)
+    {
+        $objAccesoDatos = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM empleados WHERE nombre = :nombre");
+        $consulta->bindValue(':nombre', $nombre, PDO::PARAM_STR);
+        $consulta->execute();
+        return $consulta->fetchObject("Empleado");
+    }
+
 }
 
 ?>
