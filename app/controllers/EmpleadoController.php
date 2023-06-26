@@ -23,7 +23,7 @@ class EmpleadoController extends Empleado
         }
         else
         {
-            $payload = json_encode(array("Mensaje" => "Rol de empleado no valido. (Bartender / Cervecero / Cocinero / Mozo / Socio)"));
+            $payload = json_encode(array("Mensaje" => "Rol de empleado no valido. (Bartender / Cervecero / Cocinero / Pastelero/ Mozo / Socio)"));
         }
 
         $response->getBody()->write($payload);
@@ -38,31 +38,23 @@ class EmpleadoController extends Empleado
         return $response->withHeader('Content-Type', 'application/json');
     }
     
-    // public function ModificarUno($request, $response, $args)
-    // {
-    //     $parametros = $request->getParsedBody();
+    public function ModificarUno($request, $response, $args)
+    {
+        $parametros = $request->getParsedBody();
+        $id = $parametros['id'];
+        Empleado::UpdateEmpleado($id);
+        $payload = json_encode(array("mensaje" => "Usuario modificado con exito"));
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
 
-    //     $nombre = $parametros['nombre'];
-    //     Usuario::modificarUsuario($nombre);
-
-    //     $payload = json_encode(array("mensaje" => "Usuario modificado con exito"));
-
-    //     $response->getBody()->write($payload);
-    //     return $response
-    //       ->withHeader('Content-Type', 'application/json');
-    // }
-
-    // public function BorrarUno($request, $response, $args)
-    // {
-    //     $parametros = $request->getParsedBody();
-
-    //     $usuarioId = $parametros['usuarioId'];
-    //     Usuario::borrarUsuario($usuarioId);
-
-    //     $payload = json_encode(array("mensaje" => "Usuario borrado con exito"));
-
-    //     $response->getBody()->write($payload);
-    //     return $response
-    //       ->withHeader('Content-Type', 'application/json');
-    // }
+    public function BorrarUno($request, $response, $args)
+    {
+        $parametros = $request->getParsedBody();
+        $usuarioId = $parametros['id'];
+        Empleado::DeleteEmpleado($usuarioId);
+        $payload = json_encode(array("mensaje" => "Usuario borrado con exito"));
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
 }

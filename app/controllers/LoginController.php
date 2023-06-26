@@ -12,10 +12,17 @@ class LoginController extends AuthJWT
 
         if($datosBD != null && md5($clave) == $datosBD->clave)
         {
-            $datos = array('id'=> $datosBD->id, 'nombre' => $datosBD->nombre, "rol"=> $datosBD->rol);
-            $token = AuthJWT::NuevoToken($datos);
-            $payload = json_encode(array('Se ha logeado como:'=> $datosBD->rol, 'Token' => $token));
-            $response->getBody()->write($payload);
+            if($datosBD->fechaBaja != "0000-00-00")
+            {
+                $response->getBody()->write(json_encode(array("Error" => "Usuario dado de baja!")));
+            }
+            else
+            {
+                $datos = array('id'=> $datosBD->id, 'nombre' => $datosBD->nombre, "rol"=> $datosBD->rol);
+                $token = AuthJWT::NuevoToken($datos);
+                $payload = json_encode(array('Se ha logeado como:'=> $datosBD->rol, 'Token' => $token));
+                $response->getBody()->write($payload);
+            }
         }
         else
         {

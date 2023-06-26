@@ -31,6 +31,14 @@ class FacturaController extends Factura
         }
         return $precioFinal;
     }
+
+    public function MostrarFacturas($request, $response, $args)
+    {
+        $lista = Factura::GetFacturas();
+        $payload = json_encode(array("Facturas" => $lista));
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
 }
 
 ?>

@@ -34,6 +34,21 @@ class Producto
         return $consulta->fetchObject("Producto");
     }
 
+    public static function LoadCSV($path)
+    {
+        $array = CSV::ImportarCSV($path);
+        for($i = 0; $i < sizeof($array); $i++)
+        {
+            $datos = explode(",", $array[$i]); 
+            $producto = new Producto();
+            $producto->id = $datos[0];
+            $producto->descripcion = $datos[1];
+            $producto->precio = $datos[2];
+            $producto->sector = $datos[3];
+            $producto->AltaProducto();
+        }
+    }
+
 }
 
 ?>

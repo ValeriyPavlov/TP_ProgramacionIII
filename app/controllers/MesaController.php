@@ -44,7 +44,8 @@ class MesaController extends Mesa
             if($pedido->idMesa == $mesa->id && $pedido->estado == "Listo para servir!")
             {
                 Mesa::CambiarEstado($mesa->id, "con cliente comiendo");
-                $response->getBody()->write("Se ha modificado el estado de la mesa con exito!");
+                $response->getBody()->write("Se ha modificado el estado de la mesa con exito!\n");
+                break;
             }
         }
         return $response->withHeader('Content-Type', 'application/json');

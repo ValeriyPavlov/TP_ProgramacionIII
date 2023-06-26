@@ -1,0 +1,1071 @@
+{
+	"info": {
+		"_postman_id": "755b482d-4ddf-4776-aa25-ae6d1da71c7b",
+		"name": "TP_Progra3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26594696"
+	},
+	"item": [
+		{
+			"name": "Empleados",
+			"item": [
+				{
+					"name": "Alta Empleado (S)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombre",
+									"value": "test2",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "test2",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "Pastelero",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:666/usuarios/altaEmpleado",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"usuarios",
+								"altaEmpleado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Empleados (L)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/usuarios/listarEmpleados",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"usuarios",
+								"listarEmpleados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Empleado (S)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:666/usuarios/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Baja Empleado (S)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:666/usuarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Alta Producto (L)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "descripcion",
+									"value": "Daikiri",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "1350",
+									"type": "text"
+								},
+								{
+									"key": "sector",
+									"value": "Vinoteca",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:666/productos/altaProducto",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"productos",
+								"altaProducto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Productos (L)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/productos/listarProductos",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"productos",
+								"listarProductos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Importar CSV Productos (S)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "archivo",
+									"type": "file",
+									"src": "/C:/Users/valer/OneDrive/Escritorio/Github/TP_ProgramacionIII/app/productos.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:666/productos/importarCSV",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"productos",
+								"importarCSV"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exportar CSV Productos (S)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/productos/exportarCSV",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"productos",
+								"exportarCSV"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mesas",
+			"item": [
+				{
+					"name": "Alta Mesa (L)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "estado",
+									"value": "con cliente esperando pedido",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:666/mesas/altaMesa",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"mesas",
+								"altaMesa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Mesas (S)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/mesas/listarMesas",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"mesas",
+								"listarMesas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mesa Comiendo (M)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idMesa\": 10002\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:666/mesas/cambiarEstado",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"mesas",
+								"cambiarEstado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Facturar Mesa (M)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "codigoPedido",
+									"value": "TEST1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:666/Facturar",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"Facturar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar Facturas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/MostrarFacturas",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"MostrarFacturas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cerrar Mesa (S)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idMesa\": 10002\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:666/mesas/cerrarMesa",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"mesas",
+								"cerrarMesa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Abrir Mesa (M)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idMesa\": 10001\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:666/mesas/abrirMesa",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"mesas",
+								"abrirMesa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mesa Mas Popular (S)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/pedidos/MesaPopular",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"pedidos",
+								"MesaPopular"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "Alta Pedido (M)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "idProducto",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "cantidadProductos",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "idMesa",
+									"value": "10002",
+									"type": "text"
+								},
+								{
+									"key": "codigoPedido",
+									"value": "TEST1",
+									"type": "text"
+								},
+								{
+									"key": "fotoMesa",
+									"type": "file",
+									"src": "/C:/Users/valer/OneDrive/Escritorio/Github/TP_ProgramacionIII/app/img/fotoMesa-.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:666/pedidos/altaPedido",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"pedidos",
+								"altaPedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Pedidos (S)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/pedidos/listarPedidos",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"pedidos",
+								"listarPedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Pedidos s/ Sector (L)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/pedidos/MostrarPedidosEmpleado",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"pedidos",
+								"MostrarPedidosEmpleado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tomar Pedido (L)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPedido\": 13,\r\n    \"tiempoPreparacion\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:666/pedidos/prepararPedido",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"pedidos",
+								"prepararPedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar Preparados (L)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/pedidos/MostrarPedidosPreparados",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"pedidos",
+								"MostrarPedidosPreparados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pedido Listo (L)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idPedido\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:666/pedidos/PedidoListo",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"pedidos",
+								"PedidoListo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Pedidos Listos (M)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:666/pedidos/ConsultarPedidosListos",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"pedidos",
+								"ConsultarPedidosListos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"Token\", pm.response.json().Token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/login",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deslogear",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"Token\", \"\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/login",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cliente: Listar demoras Pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "idMesa",
+							"value": "10002",
+							"type": "text"
+						},
+						{
+							"key": "codigoPedido",
+							"value": "TEST1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/demoraPedido",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"demoraPedido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Encuesta Cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigoPedido",
+							"value": "TEST1",
+							"type": "text"
+						},
+						{
+							"key": "puntuacionMesa",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "puntuacionRestaurante",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "puntuacionMozo",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "puntuacionCocinero",
+							"value": "7",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "Bastante bien.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/Encuesta",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"Encuesta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Mejores Puntaciones (S)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/MejoresEncuestas",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"MejoresEncuestas"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

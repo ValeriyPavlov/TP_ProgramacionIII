@@ -49,6 +49,25 @@ class Empleado
         return $consulta->fetchObject("Empleado");
     }
 
+    public static function DeleteEmpleado($id)
+    {
+        $objAccesoDato = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDato->prepararConsulta("UPDATE empleados SET fechaBaja = :fechaBaja WHERE id = :id");
+        $fecha = new DateTime(date("d-m-Y"));
+        $consulta->bindValue(':id', $id, PDO::PARAM_INT);
+        $consulta->bindValue(':fechaBaja', date_format($fecha, 'Y-m-d'));
+        $consulta->execute();
+    }
+
+    public static function UpdateEmpleado($id)
+    {
+        $objAccesoDato = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDato->prepararConsulta("UPDATE empleados SET fechaBaja = :fechaBaja WHERE id = :id");
+        $consulta->bindValue(':id', $id, PDO::PARAM_INT);
+        $consulta->bindValue(':fechaBaja', 0000-00-00);
+        $consulta->execute();
+    }
+
 }
 
 ?>

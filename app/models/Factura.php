@@ -19,6 +19,14 @@ class Factura
         $consulta->execute();
     }
 
+    public static function GetFacturas()
+    {
+        $objAccesoDatos = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM facturas");
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_CLASS, 'Factura');
+    }
+
 }
 
 ?>

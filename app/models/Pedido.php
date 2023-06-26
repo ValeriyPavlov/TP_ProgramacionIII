@@ -50,7 +50,16 @@ class Pedido
     public static function GetPedidosSegunSector($sector)
     {
         $objAccesoDatos = AccesoDatos::obtenerInstancia();
-        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM pedidos INNER JOIN productos ON pedidos.idProducto = productos.id WHERE sector = :sector");
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT pedidos.id, pedidos.estado, pedidos.codigoPedido, productos.descripcion, pedidos.tiempoPreparacion FROM pedidos INNER JOIN productos ON pedidos.idProducto = productos.id WHERE sector = :sector AND estado = 'Pendiente'");
+        $consulta->bindValue(':sector', $sector);
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_CLASS, 'stdClass');
+    }
+
+    public static function GetPedidosPreparados($sector)
+    {
+        $objAccesoDatos = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT pedidos.id, pedidos.estado, pedidos.codigoPedido, productos.descripcion, pedidos.tiempoPreparacion FROM pedidos INNER JOIN productos ON pedidos.idProducto = productos.id WHERE sector = :sector AND estado = 'En preparacion'");
         $consulta->bindValue(':sector', $sector);
         $consulta->execute();
         return $consulta->fetchAll(PDO::FETCH_CLASS, 'stdClass');
@@ -103,6 +112,14 @@ class Pedido
         $consulta->bindValue(':codigoPedido', $codigoPedido, PDO::PARAM_STR);
         $consulta->execute();
         return $consulta->fetchAll();
+    }
+
+    public static function MesaMasUsada()
+    {
+        $objAccesoDato = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDato->prepararConsulta("SELECT idMesa, COUNT(idMesa) AS `cantidad` FROM pedidos GROUP BY idMesa ORDER BY `cantidad` DESC LIMIT 1");
+        $consulta->execute();
+        return $consulta->fetchAll(PDO::FETCH_CLASS, 'stdClass');
     }
 
 

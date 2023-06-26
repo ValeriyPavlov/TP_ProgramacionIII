@@ -85,6 +85,35 @@ class PedidoController extends Pedido
         return $response->withHeader('Content-Type', 'application/json');
     }
 
+    public function MostrarPedidosPreparados($request, $response, $args)
+    {
+        $header = $request->getHeaderLine(("Authorization"));
+        $token = trim(explode("Bearer", $header)[1]);
+        $data = AuthJWT::ObtenerData($token);
+        $sector = Pedido::ValidarPedido($data->rol);
+        $lista = Pedido::GetPedidosPreparados($sector);
+        try
+        {
+            if(count($lista) > 0)
+            {
+                $payload = json_encode(array("Pedidos" => $lista));
+            }
+            else
+            {
+                $payload = json_encode(array("Error" => "No hay pedidos disponibles para su sector."));
+            }
+        }
+        catch(Exception $ex)
+        {
+            
+        }
+        finally
+        {
+            $response->getBody()->write($payload);
+        }
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+
     public function PrepararPedido($request, $response, $args)
     {
         $header = $request->getHeaderLine(("Authorization"));
@@ -166,6 +195,14 @@ class PedidoController extends Pedido
             $response->getBody()->write("Por el momento no hay pedidos listos.");
         }
 
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+
+    public function ConsultarMesaPopular($request, $response, $args)
+    {
+        $mesa = Pedido::MesaMasUsada();
+        $payload = json_encode($mesa);
+        $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
     }
 
